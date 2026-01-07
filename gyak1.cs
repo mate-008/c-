@@ -215,7 +215,51 @@ namespace gyakorlas1
                 default:
                     Console.WriteLine("nincs ilyen nap");
                     break;
+
+                
+            Console.WriteLine("1. feladat: Kérem adja meg a heti atkivitast(max 250 karakter):");
+            string aktivitas = Console.ReadLine();
+
+            //2. feladat
+            int osszKm = 0;
+            bool voltU = false, voltG = false, voltF = false, voltK = false;
+
+            foreach (char c in aktivitas)
+            {
+                switch (c)
+                {
+                    case 'U': osszKm += 1; voltU = true; break;
+                    case 'G': osszKm += 1; voltG = true; break;
+                    case 'F': osszKm += 2; voltF = true; break;
+                    case 'K': osszKm += 10; voltK = true; break;
+                }
+            }
+            Console.WriteLine("2. feladat: A felhasznalo altal megtett tavolsag: (0) km", osszKm);
+
+            //+.feladat
+            int jutalom = 0;
+            if (voltu && voltG &&  voltF && voltK)
+            {
+                jutalom = 10;
+                Console.WriteLine("3. feladat: bravo! jutalma meg 10km");
+
+            }
+            else
+            {
+                Console.WriteLine("3. feladat: nem jar jutalom");
+            }
+
+
+            //4. feladat
+            int vegsoKm = osszKm + jutalom;
+            Console.WriteLine("4. feladat: osszteljesitmeny: (0) km", vegsoKm);
+
+            if (vegsoKm >= 40)
+            {
+                Console.WriteLine("gratulalok, kihivas teljesitve");
+            }
         }
     }
 }
+
 
