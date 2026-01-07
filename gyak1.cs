@@ -165,6 +165,57 @@ namespace gyakorlas1
             int min szamok.Min();
             Console.WriteLine($"a legkisebb szam: {min}");
             */
+
+            
+            List<int> szamok = new List<int> { 1, 2, 4, 6, 8, 3, 7, 5 };
+            List<int> paros = new List<int>();
+
+            foreach (int szam in szamok)
+            {
+                if (szam % 2 == 0)
+                {
+                    paros.Add(szam);
+
+                }
+            }
+            Console.WriteLine("2-vel oszthato szamok: " + string.Join(", ", paros));
+
+            Console.Write("adj meg egy szamot (1-7):");
+            int nap = int.Parse(Console.ReadLine());
+            switch (nap)
+            {
+                case 1:
+                    Console.WriteLine("Hetfo");
+                    break;
+
+                case 2:
+                    Console.WriteLine("Kedd");
+                    break;
+
+                case 3:
+                    Console.WriteLine("Szerda");
+                    break;
+
+                case 4:
+                    Console.WriteLine("Csutortok");
+                    break;
+
+                case 5:
+                    Console.WriteLine("Pentek");
+                    break;
+
+                case 6:
+                    Console.WriteLine("Szombat");
+                    break;
+
+                case 7:
+                    Console.WriteLine("Vasarnap");
+                    break;
+
+                default:
+                    Console.WriteLine("nincs ilyen nap");
+                    break;
         }
     }
 }
+
