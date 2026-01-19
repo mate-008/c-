@@ -258,8 +258,71 @@ namespace gyakorlas1
             {
                 Console.WriteLine("gratulalok, kihivas teljesitve");
             }
+
+             static void kiirat()
+ {
+     Console.WriteLine("Hello Premo!");
+ }
+ static void Main(string[] args)
+ { kiirat(); }
+
+ static void kiirat(string nev)
+ {
+     Console.WriteLine(nev + "Hello" );
+ }
+
+ static void Main(string[] args)
+ {
+     kiirat("Timi ");
+     kiirat("Tamás ");
+ }
+ static void kiirat(string nev, int kor)
+ { Console.WriteLine(nev + "hello" + kor + "eves"); }
+
+ static void Main(string[string] args)
+ {
+     kiirat("Timi",20)
+     kiirat("Kata", 30)
+ }
+
+ static void main(string iskola="Premo")
+ {
+     Console.WriteLine("Hello" +iskola);
+ }
+
+ static void Main(string[] args)
+ {
+     kiirat();
+     kiirat("Vajda");
+     kiirat();
+     kiirat("VsZK");
+ }
+ static void szamol()
+ { Console.WriteLine("kerem a negyzet oldalat");
+     int szam = int.Parse(Console.ReadLine());
+     Console.WriteLine("a negyzet terulete:" + szam * szam);
+ }
+
+ static void Main(string[] args)
+ {
+     szamol();
+ }
+
+ static int szamol()
+ {
+     Console.WriteLine("kerem a negyzet oldalat:");
+     int szam = int.Parse(Console.ReadLine());
+     int ter = szam * szam;
+     return ter;
+ }
+
+ static void Main(string[] args)
+ {
+     Console.WriteLine(" a negyzet terulete:" + szamol());
+ }
         }
     }
 }
+
 
 
