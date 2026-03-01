@@ -1,0 +1,226 @@
+Petrovics Máté 11.a
+kód és feladat leirása
+Word-om nincs sajnos
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+namespace autoTuning
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            // lista létrehozása, autók tárolása
+            List<List<object>> autok = new List<List<object>>();
+
+            // fájl neve
+            string file = "adatok.txt";
+
+            // fájl beolvasása soronként
+            foreach (string sor in File.ReadLines(file))
+            {
+                // a sorok feladarabolása
+                string[] adat = sor.Split(';');
+
+                // új lista 
+                List<object> auto = new List<object>();
+
+                // adatok átalakitása
+                auto.Add(adat[0]);                  // 0  márka 
+                auto.Add(adat[1]);                  // 1  modell 
+                auto.Add(int.Parse(adat[2]));       // 2  évjárat 
+                auto.Add(int.Parse(adat[3]));       // 3  gyári lóerő 
+                auto.Add(adat[4]);                  // 4  tuning tipus 
+                auto.Add(int.Parse(adat[5]));       // 5  tuning ár 
+
+                // hozzáadjuk a (fő) listához
+                autok.Add(auto);
+            }
+
+       
+            // 1. feladat: hány db autó van
+            Console.WriteLine("1. feladat:");
+            Console.WriteLine("Autók száma: " + autok.Count);
+            // count-al megszámolom az atuók db számát
+
+
+            // 2. feladat: mennyibe került összesen a tuningoknak az ára
+            Console.WriteLine("2. feladat:");
+
+            int osszAr = 0; // árak összegyűjtése
+
+            foreach (var auto in autok)    //megnézi az összes autót
+            {
+                // 5. helyen van a tuning ára
+                osszAr += (int)auto[5];
+            }
+
+            Console.WriteLine("Összesen: " + osszAr + " Ft-ba kerültek a tuningok ");
+
+
+            // 3. feladat: mennyibe kerül a legdrágább tuning
+            Console.WriteLine("3. feladat:");
+
+            // ez az alap, ehhez hasonlitunk
+            int maxAr = (int)autok[0][5];
+
+            foreach (var auto in autok)   //megnézi az összes autót
+            {
+                // ha nagyobb mint az előző akkor erre frissitjük
+                if ((int)auto[5] > maxAr)
+                {
+                    maxAr = (int)auto[5];
+                }
+            }
+
+            Console.WriteLine("A legdrágább tuning: " + maxAr + " Ft");
+
+
+
+            // 4. feladat: 200 lóerő feletti autók kiiratása
+            Console.WriteLine("4. feladat:");
+
+            foreach (var auto in autok)    //megnézi az összes autót
+            {
+                // 3. helyen van a gyári lóerő
+                if ((int)auto[3] > 200)
+                {
+                    Console.WriteLine(auto[0] + " " + auto[1]);
+                }
+            }
+
+
+            // 5. feladat: hány turbo tuning van
+            Console.WriteLine("5. feladat:");
+
+            int turboDb = 0;
+
+            foreach (var auto in autok)    //megnézi az összes autót
+            {
+                // 4. helyen van a turbo
+                if ((string)auto[4] == "turbo")
+                {
+                    turboDb++;
+                }
+            }
+
+            Console.WriteLine("Turbo tuningok száma: " + turboDb);
+
+            // 6. feladat: 2010 utáni autók darabszáma
+            Console.WriteLine("6. feladat:");
+
+            int ujDb = 0;
+
+            foreach (var auto in autok)    //megnézi az összes autót
+            {
+                // 2. helyen van az évjárat
+                if ((int)auto[2] > 2010)
+                {
+                    ujDb++;
+                }
+            }
+
+            Console.WriteLine("2010 utáni autók: " + ujDb);
+
+
+   
+            // 7. feladat: mennyi az átlag lóerő
+            Console.WriteLine("7. feladat:");
+
+            int osszLoero = 0;
+
+            // for ciklus az összeadáshoz
+            for (int i = 0; i < autok.Count; i++)
+            {
+                osszLoero += (int)autok[i][3];
+            }
+
+            double atlag = (double)osszLoero / autok.Count;
+
+            Console.WriteLine("Az átlag lóerő: " + atlag);
+
+
+            // 8. feladat: bekért márka keresése
+            Console.WriteLine("8. feladat:");
+
+            Console.Write("Adj meg egy márkát: ");   //márka bekérése
+            string keresett = Console.ReadLine();
+
+            bool talalt = false;    //alapérték
+
+            foreach (var auto in autok)     //megnézi az összes autót
+            {
+                if ((string)auto[0] == keresett) //  0. helyen van a márka
+                {
+                    Console.WriteLine("Modell: " + auto[1]);    //adatok kiirasa ha egyezik
+                    Console.WriteLine("Évjárat: " + auto[2]);
+                    Console.WriteLine("Lóerő: " + auto[3]);
+                    talalt = true;
+                }
+            }
+
+            if (!talalt)
+            {
+                Console.WriteLine("Nincs ilyen márka az adatbázisban.");
+            }
+
+
+            // 9. feladat: switch-es feladat
+            Console.WriteLine("9. feladat:");
+
+            Console.Write("Adj meg egy tuning tipust (chip/turbo/futomu/kipufogo): ");  //választási lehetőség
+            string tipus = Console.ReadLine();
+
+            switch (tipus)    //kiirja a válasz alapján
+            {
+                case "chip":
+                    Console.WriteLine("A chip tuning teljesitmény növelésre szolgál.");
+                    break;
+
+                case "turbo":
+                    Console.WriteLine("A turbo tuning jelentős lóerő növekedést ad.");
+                    break;
+
+                case "futomu":
+                    Console.WriteLine("A futómű tuning javítja a stabilitást.");
+                    break;
+
+                case "kipufogo":
+                    Console.WriteLine("A kipufogó tuning javíthatja a hangzást.(durrog csattog)");
+                    break;
+
+                default:
+                    Console.WriteLine("Nincs ilyen tuning tipus.");
+                    break;
+            }
+
+
+            // 10. feladat: tuning tipusok darabszáma
+            Console.WriteLine("10. feladat:");
+
+            int chipDb = 0;           //alapérték
+            int turboDarab = 0;
+            int futomuDb = 0;
+            int kipufogoDb = 0;
+
+            foreach (var auto in autok)         //megnézi az összes autót
+            { 
+                if ((string)auto[4] == "chip")     //hozzá ad egyet ha talalt
+                    chipDb++;
+                else if ((string)auto[4] == "turbo")
+                    turboDarab++;
+                else if ((string)auto[4] == "futomu")
+                    futomuDb++;
+                else if ((string)auto[4] == "kipufogo")
+                    kipufogoDb++;
+            }
+
+            Console.WriteLine("Chip tuning: " + chipDb);
+            Console.WriteLine("Turbo tuning: " + turboDarab);
+            Console.WriteLine("Futómű tuning: " + futomuDb);
+            Console.WriteLine("Kipufogó tuning: " + kipufogoDb);
+        }
+    }
+}

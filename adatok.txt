@@ -1,0 +1,10 @@
+BMW;320;2005;220;chip;120000
+Audi;A4;2010;180;kipufogo;80000
+Opel;Astra;2008;140;futomu;60000
+Mercedes;C220;2015;170;chip;150000
+Honda;Civic;2012;160;turbo;200000
+Ford;Focus;2016;150;futomu;70000
+Toyota;Supra;1998;280;turbo;300000
+Subaru;Impreza;2003;250;kipufogo;90000
+VW;Golf;2018;140;chip;110000
+Mazda;RX8;2006;231;turbo;220000
