@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta lang="hu">
+    <meta charset="utf-8">
+    <title>Ciklusok</title>
+    <script type="text/javascript"src="script_ciklusok.js">
+
+    </script>
+</head>
+<body>
+    <h1>Ciklusfajták</h1>
+    <h2>Pitianer számlálós ciklus</h2>
+    <form name="szamlalos">
+        Adjon meg egy szamot:<br>
+        <input type="text" name="hanyszor"/><br>
+        <input type="button" value="Kiir" onClick="csillag()"><br>
+        <input type="text" name="eredm">
+    </form>
+    <h2>előtesztelős ciklus</h2>
+    <form name="elolteszt">
+        Mennyi pénzed van?<br>
+        <input type="text" name="osszeg"><br>
+        Mennyi lenne az elért célösszeg?<br>
+        <input type="text" name="cel"><br>
+        Mennyi a havi kamat: <br>
+        <input type="text" name="kamat"><br>
+        <input type="button" value="számolj" onclick="kamatszam_e()">
+        <input type="button" value="irja" onClick="ujra()"><br>
+        Ennyi hónap kell hogy elérd a kívánt összeget <br>
+        <input type="text" name="eredmeny">
+
+    <h2>hátultesztelős ciklus</h2>
+    <form name="hatulteszt">
+        Mennyi pénzed van?<br>
+        <input type="text" name="osszeg"><br>
+        Mennyi lenne az elért célösszeg?<br>
+        <input type="text" name="cel"><br>
+        Mennyi a havi kamat: <br>
+        <input type="text" name="kamat"><br>
+        <input type="button" value="számolj" onclick="kamatszam_e()">
+        <input type="button" value="irja" onClick="ujra()"><br>
+        Ennyi hónap kell hogy elérd a kívánt összeget <br>
+        <input type="text" name="eredmeny">
+    </form>
+
+
+
+</body>
+</html>
