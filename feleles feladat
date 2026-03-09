@@ -1,0 +1,35 @@
+using System.IO;
+
+string mappaUtvonal = @"C:\premo\egy\";
+string fajlNev = "elso.txt";
+string teljesUtvonal = Path.Combine(mappaUtvonal, fajlNev);
+
+Mappa létrehozása, ha nem létezne
+
+Directory.CreateDirectory(mappaUtvonal);
+
+Írás a fájlba
+
+Console.WriteLine("Írj be sorokat (vége: 'vege'):");
+using (StreamWriter sw = new StreamWriter(teljesUtvonal))
+{
+string sor;
+while ((sor = Console.ReadLine()) != "vege")
+{
+sw.WriteLine(sor);
+}
+}
+
+Olvasás a fájlból és kiírás
+
+Console.WriteLine("--- A fájl tartalma: ---");
+if (File.Exists(teljesUtvonal))
+{
+using (StreamReader sr = new StreamReader(teljesUtvonal))
+{
+string tartalom = sr.ReadToEnd();
+Console.WriteLine(tartalom);
+}
+}
+Console.WriteLine("Nyomj egy gombot a kilépéshez...");
+Console.ReadKey();
