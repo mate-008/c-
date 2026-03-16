@@ -33,3 +33,56 @@ Console.WriteLine(tartalom);
 }
 Console.WriteLine("Nyomj egy gombot a kilépéshez...");
 Console.ReadKey();
+
+internal class Program
+{
+    static void Main(string[] args)
+    {
+        // Autópark adatkezelő és listázó program
+
+        string mappaUtavonal = @"C:\preno\ketto";
+        string fajlNev = "autok.txt";
+        string teljesUtavonal = Path.Combine(mappaUtavonal, fajlNev);
+
+        List<string> autok = new List<string>();
+
+        for (int i = 1; i <= 5; i++)
+        {
+            Console.WriteLine("");
+            Console.WriteLine(i + ". autó adatai:");
+
+            Console.Write("Név: ");
+            string nev = Console.ReadLine();
+
+            Console.Write("Ajtók: ");
+            string ajtok = Console.ReadLine();
+
+            Console.Write("LE: ");
+            string loero = Console.ReadLine();
+
+            autok.Add($"{nev};{ajtok};{loero}");
+        }
+
+        try
+        {
+            Directory.CreateDirectory(mappaUtavonal);
+
+            File.WriteAllLines(teljesUtavonal, autok);
+            Console.WriteLine("Mentés sikeres");
+
+            Console.WriteLine("A fájl tartalma:");
+            string[] beolvasottSorok = File.ReadAllLines(teljesUtavonal);
+
+            foreach (string sor in beolvasottSorok)
+            {
+                Console.WriteLine(sor);
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Hiba: " + e.Message);
+        }
+
+        Console.ReadKey();
+    }
+}
