@@ -1,0 +1,8 @@
+Toyota	Corolla	2015	180000	feher	Budapest
+Ford	Focus	2012	220000	kek	Debrecen
+BMW	320d	2015	250000	fekete	Gyor
+Audi	A4	2018	120000	szurke	Szeged
+Opel	Astra	2012	200000	piros	Pecs
+Volkswagen	Golf	2018	140000	feher	Miskolc
+Honda	Civic	2020	90000	kek	Budapest
+Suzuki	Swift	2020	110000	piros	Gyor
